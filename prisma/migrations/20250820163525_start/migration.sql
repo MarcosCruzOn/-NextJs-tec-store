@@ -1,4 +1,28 @@
 -- CreateTable
+CREATE TABLE "public"."Category" (
+    "id" TEXT NOT NULL,
+    "name" TEXT,
+    "slug" TEXT NOT NULL,
+    "imageUrl" TEXT,
+
+    CONSTRAINT "Category_pkey" PRIMARY KEY ("id")
+);
+
+-- CreateTable
+CREATE TABLE "public"."Product" (
+    "id" TEXT NOT NULL,
+    "name" TEXT NOT NULL,
+    "slug" TEXT NOT NULL,
+    "description" TEXT NOT NULL,
+    "imageUrl" TEXT NOT NULL,
+    "basePrice" DECIMAL(8,2) NOT NULL,
+    "categoryId" TEXT NOT NULL,
+    "discountPercent" INTEGER NOT NULL DEFAULT 0,
+
+    CONSTRAINT "Product_pkey" PRIMARY KEY ("id")
+);
+
+-- CreateTable
 CREATE TABLE "public"."accounts" (
     "id" TEXT NOT NULL,
     "user_id" TEXT NOT NULL,
@@ -45,6 +69,9 @@ CREATE TABLE "public"."verification_tokens" (
 );
 
 -- CreateIndex
+CREATE UNIQUE INDEX "Product_slug_key" ON "public"."Product"("slug");
+
+-- CreateIndex
 CREATE UNIQUE INDEX "accounts_provider_provider_account_id_key" ON "public"."accounts"("provider", "provider_account_id");
 
 -- CreateIndex
@@ -55,6 +82,9 @@ CREATE UNIQUE INDEX "users_email_key" ON "public"."users"("email");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "verification_tokens_identifier_token_key" ON "public"."verification_tokens"("identifier", "token");
+
+-- AddForeignKey
+ALTER TABLE "public"."Product" ADD CONSTRAINT "Product_categoryId_fkey" FOREIGN KEY ("categoryId") REFERENCES "public"."Category"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "public"."accounts" ADD CONSTRAINT "accounts_user_id_fkey" FOREIGN KEY ("user_id") REFERENCES "public"."users"("id") ON DELETE CASCADE ON UPDATE CASCADE;

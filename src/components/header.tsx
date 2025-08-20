@@ -1,3 +1,4 @@
+"use client";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import {
@@ -14,11 +15,15 @@ import {
   PercentCircle,
   ShoppingCart,
 } from "lucide-react";
+import { signIn } from "next-auth/react";
 
 export const Header = () => {
+  const handleLoginClick = async () => {
+    await signIn();
+  };
   return (
     <Card className="mb-5">
-      <CardContent className="flex h-[89px] items-center justify-between px-8 py-0">
+      <CardContent className="flex h-[25px] items-center justify-between px-8 py-0">
         <Sheet>
           <SheetTrigger asChild>
             <Button size="icon" variant="outline">
@@ -31,7 +36,11 @@ export const Header = () => {
             </SheetHeader>
 
             <div className="flex flex-col gap-2 py-4">
-              <Button variant="outline" className="justify-start gap-2">
+              <Button
+                onClick={handleLoginClick}
+                variant="outline"
+                className="justify-start gap-2"
+              >
                 <LogIn size={16} />
                 Fazer Login
               </Button>
