@@ -1,9 +1,8 @@
-import { Header } from "../components/header";
+"use client";
+
+import { useSession } from "next-auth/react";
 
 export default function Home() {
-  return (
-    <>
-      <Header />
-    </>
-  );
+  const { data } = useSession();
+  return <>{data?.user?.name}</>;
 }
