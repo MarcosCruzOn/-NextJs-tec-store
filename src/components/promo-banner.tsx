@@ -8,7 +8,7 @@ const PromoBanner = ({ alt, ...props }: ImageProps) => {
       width={0}
       sizes="100vw"
       alt={alt}
-      className="mt-8 h-auto w-full"
+      className="w-full"
     />
   );
 };

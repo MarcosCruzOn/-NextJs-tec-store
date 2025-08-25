@@ -15,12 +15,12 @@ interface CategoryItemProps {
 
 const CategoryItem = ({ category }: CategoryItemProps) => {
   const categoriesIcon = {
-    keyboard: <KeyboardIcon />,
+    keyboards: <KeyboardIcon />,
     monitors: <MonitorIcon />,
     headphones: <Headphones />,
     mousepads: <SquareIcon />,
     speakers: <SpeakerIcon />,
-    mouse: <MouseIcon />,
+    mouses: <MouseIcon />,
   };
   return (
     <Badge
