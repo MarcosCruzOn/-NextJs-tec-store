@@ -35,6 +35,8 @@ export default async function Home() {
         src="/banner.png"
         alt="Até 55% de desconto esse mês"
         aria-describedby="banner que contem descontos"
+        // Default priority is false
+        priority={true}
       />
 
       <div className="">
