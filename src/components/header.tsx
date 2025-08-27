@@ -20,6 +20,8 @@ import {
 import { signIn, signOut, useSession } from "next-auth/react";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 import { Separator } from "./ui/separator";
+import Link from "next/link";
+import CatalogPage from "@/app/catalog/page";
 
 export const Header = () => {
   const { status, data } = useSession();
@@ -76,10 +78,12 @@ export const Header = () => {
                 </div>
               )}
 
-              <Button variant="outline" className="justify-start gap-2">
-                <ShoppingBag size={16} />
-                Catálogo
-              </Button>
+              <Link href="/catalog">
+                <Button variant="outline" className="justify-start gap-2">
+                  <ShoppingBag size={16} />
+                  Catálogo
+                </Button>
+              </Link>
 
               <Button variant="outline" className="justify-start gap-2">
                 <PercentCircle size={16} />
