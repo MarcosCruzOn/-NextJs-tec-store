@@ -14,6 +14,8 @@ type ProductDetailsPageProps = {
 export default async function ProductDetailsPage({
   params,
 }: ProductDetailsPageProps) {
+  const { slug } = await params;
+
   const product = await prismaClient.product.findFirst({
     where: {
       slug: (await params).slug,
@@ -24,7 +26,7 @@ export default async function ProductDetailsPage({
           products: {
             where: {
               slug: {
-                not: "slug",
+                not: slug,
               },
             },
           },

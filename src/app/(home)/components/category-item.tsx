@@ -9,7 +9,7 @@ interface CategoryItemProps {
 const CategoryItem = ({ category }: CategoryItemProps) => {
   return (
     <Badge
-      variant="outline"
+      variant={"outline"}
       className="flex w-44 items-center justify-center gap-2 rounded-lg py-3"
     >
       {CATEGORY_ICON[category.slug as keyof typeof CATEGORY_ICON]}

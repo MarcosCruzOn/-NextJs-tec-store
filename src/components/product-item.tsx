@@ -1,8 +1,7 @@
 import { ProductWithTotalPrice } from "@/app/helpers/product";
-
 import Image from "next/image";
-import { Badge } from "./ui/badge";
 import Link from "next/link";
+import DiscountBadge from "./discount-badge";
 
 interface ProductItemProps {
   product: ProductWithTotalPrice;
@@ -22,9 +21,12 @@ const ProductItem = ({ product }: ProductItemProps) => {
             sizes="100vw"
             className="h-auto max-h-[70%] w-auto max-w-[80%]"
           />
-          <Badge className="absolute top-2 left-2">
-            {product.discountPercentage}%
-          </Badge>
+
+          {product.discountPercentage > 0 && (
+            <DiscountBadge className="absolute top-3 left-3">
+              {product.discountPercentage}
+            </DiscountBadge>
+          )}
         </div>
 
         <div className="flex flex-col gap-1">
