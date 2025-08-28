@@ -98,7 +98,9 @@ export const Header = () => {
           </SheetContent>
         </Sheet>
 
-        <h2 className="text-lg font-semibold">tec-store</h2>
+        <Link href="/">
+          <h1 className="text-lg font-semibold">tec-store</h1>
+        </Link>
 
         <Button size="icon" variant="outline">
           <ShoppingCart size={20} />

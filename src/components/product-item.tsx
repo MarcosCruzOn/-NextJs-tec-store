@@ -2,6 +2,7 @@ import { ProductWithTotalPrice } from "@/app/helpers/product";
 
 import Image from "next/image";
 import { Badge } from "./ui/badge";
+import Link from "next/link";
 
 interface ProductItemProps {
   product: ProductWithTotalPrice;
@@ -9,7 +10,7 @@ interface ProductItemProps {
 
 const ProductItem = ({ product }: ProductItemProps) => {
   return (
-    <>
+    <Link href={`/product/${product.slug}`}>
       <div className="flex w-[170px] flex-col gap-4">
         <div className="bg-accent relative flex h-[176px] w-[170px] items-center justify-center rounded-lg">
           <Image
@@ -49,7 +50,7 @@ const ProductItem = ({ product }: ProductItemProps) => {
           </div>
         </div>
       </div>
-    </>
+    </Link>
   );
 };
 

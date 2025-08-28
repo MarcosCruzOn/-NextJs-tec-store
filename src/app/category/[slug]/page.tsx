@@ -3,7 +3,6 @@ import { computerProductTotalPrice } from "@/app/helpers/product";
 import ProductItem from "@/components/product-item";
 import { Badge } from "@/components/ui/badge";
 import { prismaClient } from "@/lib/prisma";
-import { ShapesIcon } from "lucide-react";
 
 type CategoryPageProps = {
   params: Promise<{ slug: string }>;
