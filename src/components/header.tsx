@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 
 import {
   Sheet,
+  SheetClose,
   SheetContent,
   SheetHeader,
   SheetTitle,
@@ -16,6 +17,7 @@ import {
   PercentCircle,
   ShoppingCart,
   LogOut,
+  HomeIcon,
 } from "lucide-react";
 import { signIn, signOut, useSession } from "next-auth/react";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
@@ -88,18 +90,32 @@ export const Header = () => {
                   Fazer Logout
                 </Button>
               )}
+              <SheetClose asChild>
+                <Link href="/">
+                  <Button variant="outline" className="justify-start gap-2">
+                    <HomeIcon size={16} />
+                    Inicio
+                  </Button>
+                </Link>
+              </SheetClose>
 
-              <Link href="/catalog">
-                <Button variant="outline" className="justify-start gap-2">
-                  <ShoppingBag size={16} />
-                  Catálogo
-                </Button>
-              </Link>
+              <SheetClose asChild>
+                <Link href="/catalog">
+                  <Button variant="outline" className="justify-start gap-2">
+                    <ShoppingBag size={16} />
+                    Catálogo
+                  </Button>
+                </Link>
+              </SheetClose>
 
-              <Button variant="outline" className="justify-start gap-2">
-                <PercentCircle size={16} />
-                Ofertas
-              </Button>
+              <SheetClose asChild>
+                <Link href={"/deals"}>
+                  <Button variant="outline" className="justify-start gap-2">
+                    <PercentCircle size={16} />
+                    Ofertas
+                  </Button>
+                </Link>
+              </SheetClose>
 
               <Button variant="outline" className="justify-start gap-2">
                 <ShoppingCart size={16} />

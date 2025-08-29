@@ -7,6 +7,7 @@ import { computerProductTotalPrice } from "@/app/helpers/product";
 
 const Cart = () => {
   const { products } = useContext(CartContext);
+
   return (
     <div className="p-5">
       <div className="flex flex-col gap-5">
@@ -20,12 +21,18 @@ const Cart = () => {
 
         {/* RENDERIZAR OS PRODUTOS */}
         <div className="flex flex-col gap-5">
-          {products.map((product) => (
-            <CartItem
-              key={product.id}
-              product={computerProductTotalPrice(product as any) as any}
-            />
-          ))}
+          {products.length > 0 ? (
+            products.map((product) => (
+              <CartItem
+                key={product.id}
+                product={computerProductTotalPrice(product as any) as any}
+              />
+            ))
+          ) : (
+            <p className="text-center font-semibold">
+              Você acabou de chegar aqui então tudo é mato
+            </p>
+          )}
         </div>
       </div>
     </div>
