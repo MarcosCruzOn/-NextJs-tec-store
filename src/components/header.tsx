@@ -21,7 +21,7 @@ import { signIn, signOut, useSession } from "next-auth/react";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 import { Separator } from "./ui/separator";
 import Link from "next/link";
-import CatalogPage from "@/app/catalog/page";
+import Cart from "./cart";
 
 export const Header = () => {
   const { status, data } = useSession();
@@ -78,6 +78,17 @@ export const Header = () => {
                 </div>
               )}
 
+              {status === "authenticated" && (
+                <Button
+                  onClick={handleLogOutClick}
+                  variant="outline"
+                  className="w-full justify-start gap-2"
+                >
+                  <LogOut size={16} />
+                  Fazer Logout
+                </Button>
+              )}
+
               <Link href="/catalog">
                 <Button variant="outline" className="justify-start gap-2">
                   <ShoppingBag size={16} />
@@ -101,10 +112,16 @@ export const Header = () => {
         <Link href="/">
           <h1 className="text-lg font-semibold">tec-store</h1>
         </Link>
-
-        <Button size="icon" variant="outline">
-          <ShoppingCart size={20} />
-        </Button>
+        <Sheet>
+          <SheetTrigger asChild>
+            <Button size="icon" variant="outline">
+              <ShoppingCart size={20} />
+            </Button>
+          </SheetTrigger>
+          <SheetContent>
+            <Cart />
+          </SheetContent>
+        </Sheet>
       </CardContent>
     </Card>
   );
