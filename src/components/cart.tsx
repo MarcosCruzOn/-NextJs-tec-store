@@ -7,9 +7,23 @@ import { computerProductTotalPrice } from "@/app/helpers/product";
 import { Separator } from "@radix-ui/react-separator";
 import { Button } from "./ui/button";
 import { ScrollArea } from "./ui/scroll-area";
+import { createCheckout } from "@/actions/checkout";
+import { loadStripe } from "@stripe/stripe-js";
 
 const Cart = () => {
   const { products, total, subtotal, totalDiscount } = useContext(CartContext);
+
+  const handleFinishPurchaseClick = async () => {
+    const checkout = await createCheckout(products);
+
+    const stripe = await loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY);
+
+    stripe?.redirectToCheckout({
+      sessionId: checkout.id,
+    });
+
+    console.log(checkout);
+  };
 
   return (
     <div className="p-5">
@@ -25,7 +39,7 @@ const Cart = () => {
         {/* RENDERIZAR OS PRODUTOS */}
         <div className="flex h-full max-h-full flex-col gap-5 overflow-hidden">
           <ScrollArea className="h-full">
-            <div className="flex h-80 flex-col gap-8 bg-red-400">
+            <div className="flex h-80 flex-col gap-8">
               {products.length > 0 ? (
                 products.map((product) => (
                   <CartItem
@@ -34,9 +48,7 @@ const Cart = () => {
                   />
                 ))
               ) : (
-                <p className="text-center font-semibold">
-                  Carrinho vazio. Vamos fazer compras?
-                </p>
+                <p className="text-center font-semibold">Carrinho vazio</p>
               )}
             </div>
           </ScrollArea>
@@ -74,7 +86,7 @@ const Cart = () => {
 
             <Button
               className="mt-7 font-bold uppercase"
-              // onClick={handleFinishPurchaseClick}
+              onClick={handleFinishPurchaseClick}
             >
               Finalizar compra
             </Button>

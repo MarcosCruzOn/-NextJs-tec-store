@@ -28,9 +28,9 @@ const CartItem = ({ product }: CartItemProps) => {
   };
 
   return (
-    <div className="item-center flex justify-between">
+    <div className="border-accent border-rounded flex items-center justify-between border">
       <div className="flex items-center gap-2">
-        <div className="bg-accent flex h-20 w-20 items-center justify-center rounded-lg">
+        <div className="bg-accent flex h-16 w-16 items-center justify-center rounded-lg">
           <Image
             src={product.imageUrls[0]}
             width={0}
