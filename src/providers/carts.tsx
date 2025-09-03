@@ -35,9 +35,17 @@ export const CartContext = createContext<ICartContext>({
 });
 
 const CartProvider = ({ children }: { children: ReactNode }) => {
-  const [products, setProducts] = useState<CartProduct[]>(
-    JSON.parse(localStorage.getItem("@tec-store/cart-products") || "[]"),
-  );
+  // const [products, setProducts] = useState<CartProduct[]>(
+  //   JSON.parse(localStorage.getItem("@tec-store/cart-products") || "[]"),
+  // );
+  const [products, setProducts] = useState<CartProduct[]>([]);
+
+  useEffect(() => {
+    const stored = localStorage.getItem("@tec-store/cart-products");
+    if (stored) {
+      setProducts(JSON.parse(stored));
+    }
+  }, []);
 
   // Total sem descontos
   const subtotal = useMemo(() => {
@@ -55,9 +63,16 @@ const CartProvider = ({ children }: { children: ReactNode }) => {
 
   const totalDiscount = subtotal - total;
 
-  useEffect(() => {
-    localStorage.setItem("@tec-store/cart-products", JSON.stringify(products));
-  }, [products]);
+  // useEffect(() => {
+  //   localStorage.setItem("@tec-store/cart-products", JSON.stringify(products));
+  // }, [products]);
+
+  // useEffect(() => {
+  //   const stored = localStorage.getItem("@tec-store/cart-products");
+  //   if (stored) {
+  //     setProducts(JSON.parse(stored));
+  //   }
+  // }, []);
 
   const addProductToCart = (product: CartProduct) => {
     const productIsAlreadyOnCart = products.some(

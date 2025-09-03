@@ -18,6 +18,7 @@ import {
   ShoppingCart,
   LogOut,
   HomeIcon,
+  ShoppingBasketIcon,
 } from "lucide-react";
 import { signIn, signOut, useSession } from "next-auth/react";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
@@ -95,6 +96,15 @@ export const Header = () => {
                   <Button variant="outline" className="justify-start gap-2">
                     <HomeIcon size={16} />
                     Inicio
+                  </Button>
+                </Link>
+              </SheetClose>
+
+              <SheetClose asChild>
+                <Link href="/orders">
+                  <Button variant="outline" className="justify-start gap-2">
+                    <ShoppingBasketIcon size={16} />
+                    Meus Pedidos
                   </Button>
                 </Link>
               </SheetClose>

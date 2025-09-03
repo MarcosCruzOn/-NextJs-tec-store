@@ -31,6 +31,7 @@ export const POST = async (request: Request) => {
       },
     );
     const lineItems = sessionWithLineItems.line_items;
+    console.log("Esse é seu item de compra" + lineItems);
 
     // ATUALIZAR PEDIDO
     await prismaClient.order.update({

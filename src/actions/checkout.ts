@@ -5,7 +5,7 @@ import Stripe from "stripe";
 
 export const createCheckout = async (
   products: CartProduct[],
-  //   orderId: string,
+  orderId: string,
 ) => {
   const stripe = new Stripe(process.env.STRIPE_SECRET_KEY, {
     apiVersion: "2025-08-27.basil",
@@ -16,9 +16,9 @@ export const createCheckout = async (
     mode: "payment",
     success_url: "http://localhost:3000",
     cancel_url: "http://localhost:3000",
-    // metadata: {
-    //   orderId,
-    // },
+    metadata: {
+      orderId,
+    },
     line_items: products.map((product) => {
       return {
         price_data: {
