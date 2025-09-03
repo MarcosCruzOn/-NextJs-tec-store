@@ -10,7 +10,7 @@ const OrderProductItem = ({ orderProduct }: OrderProductItemProps) => {
   const productWithTotalPrice = computerProductTotalPrice(orderProduct.product);
   return (
     <div className="flex items-center gap-4">
-      <div className="roudnded-lg w=[77px] flex h-[77px] items-center justify-center bg-amber-700">
+      <div className="roudnded-lg bg-accent flex h-20 w-28 items-center justify-center">
         <Image
           src={orderProduct.product.imageUrls[0]}
           alt={orderProduct.product.name}
