@@ -6,15 +6,20 @@ import { getServerSession } from "next-auth";
 import OrderItem from "./components/orders-items";
 
 async function OrderPage() {
-  const user = getServerSession(authOptions);
+  const session = await getServerSession(authOptions);
 
-  if (!user) {
-    return <p>Acesso Negado!</p>;
+  if (!session || !session.user) {
+    return (
+      <div className="flex h-full flex-col items-center justify-center">
+        <p className="font-bold">Acesso Negado!</p>
+        <p className="text-sm opacity-60">Faça o login</p>
+      </div>
+    );
   }
 
   const orders = await prismaClient.order.findMany({
     where: {
-      userId: (user as any).id,
+      userId: session.user.id,
     },
     include: {
       orderProducts: {
