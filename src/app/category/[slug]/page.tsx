@@ -25,10 +25,7 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
 
   return (
     <div className="flex flex-col gap-8 p-5">
-      <Badge
-        className="border-primary w-fit gap-1 border-2 px-3 py-1.5 text-base uppercase"
-        variant={"outline"}
-      >
+      <Badge variant={"heading"}>
         {CATEGORY_ICON[(await params).slug as keyof typeof CATEGORY_ICON]}
         {category.name}
       </Badge>

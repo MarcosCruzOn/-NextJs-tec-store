@@ -29,44 +29,55 @@ export default async function Home() {
     },
   });
   return (
-    <div className="flex flex-col gap-8 py-8">
-      <PromoBanner
-        src="/banner.png"
-        alt="Até 55% de desconto esse mês"
-        aria-describedby="banner que contem descontos"
-        // Default priority is false
-        priority={true}
-      />
-
-      <div className="">
-        <Categories />
+    <div>
+      <div className="mx-auto max-w-[1920px]">
+        <PromoBanner
+          src="/deals-banner.png"
+          alt="Até 55% de desconto esse mês"
+          aria-describedby="banner que contem descontos"
+          className="hidden h-auto w-full lg:block"
+        />
       </div>
 
-      <div>
-        <SectionTitle>Ofertas</SectionTitle>
-        <ProductList products={deals} />
-      </div>
+      <div className="container mx-auto flex flex-col gap-8 py-8">
+        <PromoBanner
+          src="/banner-home-01.png"
+          alt="Até 55% de desconto esse mês"
+          aria-describedby="banner que contem descontos"
+          // Default priority is false
+          priority={true}
+          className="px-5 lg:hidden"
+        />
+        <div className="">
+          <Categories />
+        </div>
 
-      <PromoBanner
-        src="/bannner Mouses.png"
-        alt="Até 55% de desconto esse mês"
-        aria-describedby="banner que contem descontos"
-      />
+        <div>
+          <SectionTitle>Ofertas</SectionTitle>
+          <ProductList products={deals} />
+        </div>
 
-      <div className="">
-        <SectionTitle>Teclados</SectionTitle>
-        <ProductList products={keyboards} />
-      </div>
+        <PromoBanner
+          src="/bannner Mouses.png"
+          alt="Até 55% de desconto esse mês"
+          aria-describedby="banner que contem descontos"
+        />
 
-      <PromoBanner
-        src="/banner Fones.png"
-        alt="Até 20% de desconto esse mês"
-        aria-describedby="banner que contem descontos"
-      />
+        <div className="">
+          <SectionTitle>Teclados</SectionTitle>
+          <ProductList products={keyboards} />
+        </div>
 
-      <div className="">
-        <SectionTitle>Fones</SectionTitle>
-        <ProductList products={phones} />
+        <PromoBanner
+          src="/banner Fones.png"
+          alt="Até 20% de desconto esse mês"
+          aria-describedby="banner que contem descontos"
+        />
+
+        <div className="">
+          <SectionTitle>Fones</SectionTitle>
+          <ProductList products={phones} />
+        </div>
       </div>
     </div>
   );

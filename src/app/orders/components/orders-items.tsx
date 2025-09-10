@@ -39,7 +39,12 @@ const OrderItem = ({ order }: OrderItemProps) => {
   const totalDiscount = subtotal - total;
   return (
     <Card className="px-5">
-      <Accordion type="single" className="w-full" collapsible>
+      <Accordion
+        type="single"
+        className="w-full"
+        collapsible
+        defaultValue={order.id}
+      >
         <AccordionItem value={order.id}>
           <AccordionTrigger>
             <div className="flex flex-col gap-1 text-left">

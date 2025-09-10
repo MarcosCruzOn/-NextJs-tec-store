@@ -10,7 +10,7 @@ async function OrderPage() {
 
   if (!session || !session.user) {
     return (
-      <div className="flex h-full flex-col items-center justify-center">
+      <div className="flex h-full flex-col items-center justify-center gap-2 p-5">
         <p className="font-bold">Acesso Negado!</p>
         <p className="text-sm opacity-60">Faça o login</p>
       </div>
@@ -31,10 +31,7 @@ async function OrderPage() {
   });
   return (
     <div className="p-5">
-      <Badge
-        variant={"outline"}
-        className="border-primary w-fit gap-1 border-2 px-3 py-2"
-      >
+      <Badge variant={"heading"}>
         <ShoppingBasketIcon size={16} />
         Meus Pedidos
       </Badge>
