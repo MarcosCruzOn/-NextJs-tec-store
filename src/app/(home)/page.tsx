@@ -4,6 +4,7 @@ import { prismaClient } from "@/lib/prisma";
 import ProductList from "../../components/product-list";
 import SectionTitle from "@/components/section-title";
 import PromoBanner from "@/components/promo-banner";
+import Link from "next/link";
 
 export default async function Home() {
   const deals = await prismaClient.product.findMany({
@@ -21,64 +22,91 @@ export default async function Home() {
       },
     },
   });
-  const phones = await prismaClient.product.findMany({
+
+  const mouses = await prismaClient.product.findMany({
     where: {
       category: {
-        slug: "headphones",
+        slug: "mouses",
       },
     },
   });
+
   return (
-    <div>
+    <>
       <div className="mx-auto max-w-[1920px]">
-        <PromoBanner
-          src="/deals-banner.png"
-          alt="Até 55% de desconto esse mês"
-          aria-describedby="banner que contem descontos"
-          className="hidden h-auto w-full lg:block"
-        />
+        <Link href="/deals">
+          <PromoBanner
+            src="/deals-banner.png"
+            className="hidden h-auto w-full lg:block"
+            alt="Até 55% de desconto esse mês!"
+          />
+        </Link>
       </div>
 
       <div className="mx-auto flex flex-col gap-8 py-8 lg:container lg:gap-10">
-        <PromoBanner
-          src="/banner-home-01.png"
-          alt="Até 55% de desconto esse mês"
-          aria-describedby="banner que contem descontos"
-          // Default priority is false
-          priority={true}
-          className="px-5 lg:hidden"
-        />
-        <div className="">
+        <Link href="/deals">
+          <PromoBanner
+            src="/banner-home-01.png"
+            alt="Até 55% de desconto esse mês!"
+            className="px-5 lg:hidden"
+          />
+        </Link>
+
+        <div className="px-5 lg:mt-2">
           <Categories />
         </div>
 
-        <div>
-          <SectionTitle>Ofertas</SectionTitle>
+        <div className="flex flex-col gap-3 lg:gap-5">
+          <SectionTitle className="pl-5">Ofertas</SectionTitle>
           <ProductList products={deals} />
         </div>
 
-        <PromoBanner
-          src="/bannner Mouses.png"
-          alt="Até 55% de desconto esse mês"
-          aria-describedby="banner que contem descontos"
-        />
+        <div className="flex flex-col lg:flex-row">
+          <Link href="/category/mouses" className="flex flex-1">
+            <PromoBanner
+              src="/banner-home-02.png"
+              alt="Até 55% de desconto em mouses!"
+              className="w-0 flex-1 px-5"
+            />
+          </Link>
 
-        <div className="">
-          <SectionTitle>Teclados</SectionTitle>
+          <Link href="/category/headphones" className="flex flex-1">
+            <PromoBanner
+              src="/banner-home-03.png"
+              alt="Até 55% de desconto em fones!"
+              className="hidden w-0 flex-1 lg:block"
+            />
+          </Link>
+        </div>
+
+        <div className="flex flex-col gap-3 lg:gap-5">
+          <SectionTitle className="pl-5">Teclados</SectionTitle>
           <ProductList products={keyboards} />
         </div>
 
-        <PromoBanner
-          src="/banner Fones.png"
-          alt="Até 20% de desconto esse mês"
-          aria-describedby="banner que contem descontos"
-        />
+        <div>
+          <Link href="/category/headphones">
+            <PromoBanner
+              src="/banner-home-03.png"
+              alt="Até 55% de desconto em mouses!"
+              className="px-5 lg:hidden"
+            />
+          </Link>
 
-        <div className="">
-          <SectionTitle>Fones</SectionTitle>
-          <ProductList products={phones} />
+          <Link href="/catalog">
+            <PromoBanner
+              src="/free-shipping-banner.png"
+              alt="Até 55% de desconto em mouses!"
+              className="hidden px-5 lg:block"
+            />
+          </Link>
+        </div>
+
+        <div className="flex flex-col gap-3 lg:gap-5">
+          <SectionTitle className="pl-5">Mouses</SectionTitle>
+          <ProductList products={mouses} />
         </div>
       </div>
-    </div>
+    </>
   );
 }
