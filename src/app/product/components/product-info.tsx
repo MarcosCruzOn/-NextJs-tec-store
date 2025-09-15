@@ -28,20 +28,22 @@ const ProductInfo = ({ product }: ProductInfoProps) => {
     console.log(product);
   };
   return (
-    <div className="flex flex-col p-5">
-      <h2 className="text-xl">{product.name}</h2>
+    <div className="lg:bg-accent flex flex-col px-5 lg:w-[40%] lg:rounded-lg lg:p-10">
+      <h2 className="text-lg lg:text-2xl">{product.name}</h2>
 
       <div className="flex items-center gap-1">
-        <h1 className="text-3xl font-bold">
+        <h1 className="text-xl font-bold lg:text-3xl">
           R${product.totalPrice.toFixed(2)}
         </h1>
         {product.discountPercentage > 0 && (
-          <DiscountBadge>{product.discountPercentage}</DiscountBadge>
+          <DiscountBadge className="lg:text-base">
+            {product.discountPercentage}
+          </DiscountBadge>
         )}
       </div>
 
       {product.discountPercentage > 0 && (
-        <p className="text-sm line-through opacity-75">
+        <p className="text-sm line-through opacity-75 lg:text-base">
           {" "}
           {Number(product.basePrice).toFixed(2)}R$
         </p>
@@ -81,11 +83,14 @@ const ProductInfo = ({ product }: ProductInfoProps) => {
 
         <div className="bg-accent flex items-center justify-between rounded-lg px-5 py-2 lg:bg-[#2A2A2A]">
           <div className="flex items-center gap-2">
-            <TruckIcon />
+            <TruckIcon className="lg:text-neutral-100" />
 
             <div className="flex flex-col">
-              <p className="text-xs">
-                Entrega via <span className="font-bold">tecPackge®</span>
+              <p className="text-xs lg:text-neutral-100">
+                Entrega via{" "}
+                <span className="font-bold lg:text-neutral-100">
+                  tecPackge®
+                </span>
               </p>
               <p className="text-xs text-[#8162FF]">
                 Envio para <span className="font-bold">todo Brasil</span>
@@ -93,7 +98,7 @@ const ProductInfo = ({ product }: ProductInfoProps) => {
             </div>
           </div>
 
-          <p className="text-xs font-bold">Frete grátis</p>
+          <p className="text-xs font-bold text-neutral-100">Frete grátis</p>
         </div>
       </div>
     </div>

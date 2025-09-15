@@ -32,7 +32,7 @@ const ProductImages = ({ imageUrls, name }: ProductImagesProps) => {
         {imageUrls.map((imageUrl) => (
           <button
             key={imageUrl}
-            className={`bg-accent flex h-[100px] items-center justify-center rounded-lg ${
+            className={`bg-accent flex h-14 items-center justify-center rounded-lg lg:h-28 ${
               imageUrl === currentImage &&
               "border-primary border-2 border-solid"
             } `}
