@@ -28,9 +28,11 @@ const CartItem = ({ product }: CartItemProps) => {
   };
 
   return (
-    <div className="border-accent border-rounded flex items-center justify-between border">
-      <div className="flex items-center gap-2">
-        <div className="bg-accent flex h-16 w-16 items-center justify-center rounded-lg">
+    <div className="flex items-center justify-between">
+      <div className="flex items-center gap-4">
+        {/* PARTE DIREITA (FOTO E NOME) */}
+
+        <div className="bg-accent flex h-[77px] w-[77px] items-center justify-center rounded-lg lg:h-[120px] lg:w-[120px]">
           <Image
             src={product.imageUrls[0]}
             width={0}
@@ -40,46 +42,52 @@ const CartItem = ({ product }: CartItemProps) => {
             className="h-auto max-h-[70%] w-auto max-w-[80%]"
           />
         </div>
-      </div>
 
-      <div className="flex flex-col">
-        <p className="text-xs">{product.name}</p>
-        <div className="flex items-center gap-2">
-          <p className="text-sm font-bold">{product.totalPrice.toFixed(2)}</p>
-          {product.discountPercentage > 0 && (
-            <p className="opaciity-75 text-xs line-through">
-              {Number(product.basePrice).toFixed(2)} R$
+        <div className="flex flex-col gap-1 lg:gap-2">
+          <p className="text-xs lg:text-sm">{product.name}</p>
+
+          <div className="flex items-center gap-2">
+            <p className="text-sm font-bold lg:text-base">
+              R$ {product.totalPrice.toFixed(2)}
             </p>
-          )}
-        </div>
-        <div className="mt-2 flex items-center gap-1">
-          <Button
-            size="icon"
-            variant="outline"
-            className="h-8 w-8"
-            onClick={handleDecreaseQuantityClick}
-          >
-            <ArrowLeftIcon size={8} />
-          </Button>
+            {product.discountPercentage > 0 && (
+              <p className="text-xs line-through opacity-75 lg:text-sm">
+                R$ {Number(product.basePrice).toFixed(2)}
+              </p>
+            )}
+          </div>
 
-          <span className="text-xs">{product.quantity}</span>
+          <div className="flex items-center gap-1 lg:gap-3">
+            <Button
+              size="icon"
+              variant="outline"
+              className="h-8 w-8 lg:h-9 lg:w-9"
+              onClick={handleDecreaseQuantityClick}
+            >
+              <ArrowLeftIcon className="h-4 w-4 lg:h-5 lg:w-5" />
+            </Button>
 
-          <Button
-            size="icon"
-            variant="outline"
-            className="h-8 w-8"
-            onClick={handleIncreaseQuantityClick}
-          >
-            <ArrowRightIcon size={8} />
-          </Button>
+            <span className="text-xs lg:text-sm">{product.quantity}</span>
+
+            <Button
+              size="icon"
+              variant="outline"
+              className="h-8 w-8 lg:h-9 lg:w-9"
+              onClick={handleIncreaseQuantityClick}
+            >
+              <ArrowRightIcon className="h-4 w-4 lg:h-5 lg:w-5" />
+            </Button>
+          </div>
         </div>
       </div>
+
       <Button
-        size={"icon"}
-        variant={"outline"}
+        size="icon"
+        variant="outline"
         onClick={handleRemoveProductClick}
+        className="h-8 w-8 lg:h-9 lg:w-9"
       >
-        <Trash2Icon size={16} />
+        <Trash2Icon className="h-4 w-4 lg:h-5 lg:w-5" />
       </Button>
     </div>
   );

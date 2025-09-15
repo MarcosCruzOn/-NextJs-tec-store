@@ -144,7 +144,8 @@ export const Header = () => {
               <ShoppingCart size={20} />
             </Button>
           </SheetTrigger>
-          <SheetContent>
+
+          <SheetContent className="lg:w-[600px] lg:max-w-[600px]">
             <Cart />
           </SheetContent>
         </Sheet>
