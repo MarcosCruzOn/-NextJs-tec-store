@@ -3,7 +3,7 @@ import { Badge } from "./ui/badge";
 import { useContext } from "react";
 import { CartContext } from "@/providers/carts";
 import CartItem from "./cart-item";
-import { computerProductTotalPrice } from "@/app/helpers/product";
+import { computerProductTotalPrice } from "@/helpers/product";
 import { Separator } from "@radix-ui/react-separator";
 import { Button } from "./ui/button";
 import { ScrollArea } from "./ui/scroll-area";

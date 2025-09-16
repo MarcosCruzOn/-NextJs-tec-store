@@ -30,7 +30,7 @@ async function OrderPage() {
     },
   });
   return (
-    <div className="p-5">
+    <div className="p-5 lg:container lg:mx-auto lg:py-10">
       <Badge variant={"heading"}>
         <ShoppingBasketIcon size={16} />
         Meus Pedidos

@@ -1,6 +1,6 @@
 "use client";
 
-import { ProductWithTotalPrice } from "@/app/helpers/product";
+import { ProductWithTotalPrice } from "@/helpers/product";
 import DiscountBadge from "@/components/discount-badge";
 import { Button } from "@/components/ui/button";
 import { CartContext } from "@/providers/carts";

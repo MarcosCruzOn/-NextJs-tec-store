@@ -1,4 +1,4 @@
-import { computerProductTotalPrice } from "@/app/helpers/product";
+import { computerProductTotalPrice } from "@/helpers/product";
 import { Prisma } from "@prisma/client";
 import Image from "next/image";
 

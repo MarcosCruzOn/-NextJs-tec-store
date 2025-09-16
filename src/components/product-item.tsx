@@ -1,4 +1,4 @@
-import { ProductWithTotalPrice } from "@/app/helpers/product";
+import { ProductWithTotalPrice } from "@/helpers/product";
 import Image from "next/image";
 import Link from "next/link";
 import DiscountBadge from "./discount-badge";

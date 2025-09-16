@@ -1,6 +1,6 @@
 import { prismaClient } from "@/lib/prisma";
 
-import { computerProductTotalPrice } from "@/app/helpers/product";
+import { computerProductTotalPrice } from "@/helpers/product";
 
 import SectionTitle from "@/components/section-title";
 import ProductImages from "../components/product-images";

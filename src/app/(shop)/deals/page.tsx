@@ -1,6 +1,6 @@
 import { Badge } from "@/components/ui/badge";
 import ProductItem from "@/components/product-item";
-import { computerProductTotalPrice } from "@/app/helpers/product";
+import { computerProductTotalPrice } from "@/helpers/product";
 import { prismaClient } from "@/lib/prisma";
 import { PercentIcon } from "lucide-react";
 
