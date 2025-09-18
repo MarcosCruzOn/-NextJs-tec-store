@@ -31,8 +31,8 @@ const OrderItem = ({ order }: OrderItemProps) => {
   // Total com descontos
   const total = useMemo(() => {
     return order.orderProducts.reduce((acc, product) => {
-      const productWithTotalPrice = computerProductTotalPrice(product.product);
-      return acc + productWithTotalPrice.totalPrice * product.quantity;
+      const productTotalPrice = computerProductTotalPrice(product.product);
+      return acc + productTotalPrice * product.quantity;
     }, 0);
   }, [order.orderProducts]);
 

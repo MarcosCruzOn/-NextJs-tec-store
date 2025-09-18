@@ -21,7 +21,7 @@ const ProductsPage = async () => {
   const productsWithTotalPrice: ProductWithTotalPriceAndCategory[] =
     products.map((product) => ({
       ...product,
-      totalPrice: Number(computerProductTotalPrice(product)),
+      totalPrice: computerProductTotalPrice(product),
     }));
 
   return (

@@ -33,7 +33,10 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
         {category.products.map((product) => (
           <ProductItem
             key={product.id}
-            product={computerProductTotalPrice(product)}
+            product={{
+              ...product,
+              totalPrice: computerProductTotalPrice(product),
+            }}
           />
         ))}
       </div>

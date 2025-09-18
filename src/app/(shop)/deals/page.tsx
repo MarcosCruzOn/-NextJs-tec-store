@@ -29,7 +29,7 @@ const DealsPage = async () => {
             key={product.id}
             product={{
               ...product,
-              totalPrice: Number(computerProductTotalPrice(product)),
+              totalPrice: computerProductTotalPrice(product),
             }}
           />
         ))}

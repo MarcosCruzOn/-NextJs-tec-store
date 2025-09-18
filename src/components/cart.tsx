@@ -56,7 +56,10 @@ const Cart = () => {
                 products.map((product) => (
                   <CartItem
                     key={product.id}
-                    product={computerProductTotalPrice(product as any) as any}
+                    product={{
+                      ...product,
+                      totalPrice: computerProductTotalPrice(product),
+                    }}
                   />
                 ))
               ) : (

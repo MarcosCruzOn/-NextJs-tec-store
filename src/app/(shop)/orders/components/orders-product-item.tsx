@@ -7,7 +7,7 @@ interface OrderProductItemProps {
 }
 
 const OrderProductItem = ({ orderProduct }: OrderProductItemProps) => {
-  const productWithTotalPrice = computerProductTotalPrice(orderProduct.product);
+  const productTotalPrice = computerProductTotalPrice(orderProduct.product);
   return (
     <div className="flex items-center gap-4">
       <div className="roudnded-lg bg-accent flex h-20 w-28 items-center justify-center">
@@ -33,13 +33,11 @@ const OrderProductItem = ({ orderProduct }: OrderProductItemProps) => {
         </div>
         <div className="flex">
           <div className="flex w-full items-center justify-between">
-            <p className="font-bold">
-              {productWithTotalPrice.totalPrice.toFixed(2)}
-            </p>
+            <p className="font-bold">{productTotalPrice.toFixed(2)}</p>
 
-            {productWithTotalPrice.discountPercentage > 0 && (
+            {orderProduct.discountPercentage > 0 && (
               <p className="text-xs line-through opacity-60">
-                {Number(productWithTotalPrice.basePrice).toFixed(2)} R${" "}
+                {Number(orderProduct.basePrice).toFixed(2)} R${" "}
               </p>
             )}
 
