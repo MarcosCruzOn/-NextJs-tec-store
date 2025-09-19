@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "../globals.css";
 import { AuthProvider } from "@/providers/auth";
-import Footer from "@/components/footer";
 import Sidebar from "./dashboard/components/sidebar";
 
 const geistSans = Geist({
@@ -30,12 +29,15 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <div className="flex min-h-screen flex-col">
+        <div className="flex flex-col">
           <AuthProvider>
-            <div className="flex">
-              <Sidebar /> {children}
+            <div className="flex h-screen">
+              {/* Sidebar fixa */}
+              <Sidebar />
+
+              {/* Área principal com scroll */}
+              <main className="flex-1 overflow-hidden">{children}</main>
             </div>
-            <Footer />
           </AuthProvider>
         </div>
       </body>
